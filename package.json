@@ -6,8 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build --base=/",
-    "predeploy": "npm run build && node -e \"require('fs').writeFileSync('dist/CNAME','www.inno-craft.com')\"",
-    "deploy": "npx gh-pages -d dist -b gh-pages -f --dotfiles -c www.inno-craft.com"
+    "predeploy": "npm run build && node -e \"const fs=require('fs');let s=fs.readFileSync('dist/index.html','utf8');s=s.replaceAll('/inno-craft-website/','/');fs.writeFileSync('dist/index.html',s);\" && node -e \"require('fs').writeFileSync('dist/CNAME','www.inno-craft.com')\"",
+    "deploy": "gh-pages -d dist -b gh-pages -f --dotfiles -c www.inno-craft.com"
   },
   "dependencies": {
     "react": "^18.2.0",
